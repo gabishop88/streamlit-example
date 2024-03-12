@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 def main():
     st.set_page_config(
@@ -26,14 +27,19 @@ def main():
 
     # Form
     st.subheader(data_input_form)
-    st.write("Field Name: ")
-    st.write("Field Group: (Optional)")
-    st.write("Field Type: ")
-    st.write("Boundaries: (Upload .shp files)")
-    st.write("Certified Year: ")
-    st.write("Active: ")
+    # Sample DataFrame for demonstration
+    data = {'Field Name': ['Field 1', 'Field 2'], 'Field Group': ['Group 1', 'Group 2'], 'Field Type': ['Type 1', 'Type 2'],
+            'Boundaries': ['Boundary 1', 'Boundary 2'], 'Certified Year': [2022, 2023], 'Active': [True, False]}
+    df = pd.DataFrame(data)
+
+    # Display DataFrame as a table
+    st.dataframe(df)
+
+    # Button to add a new row
     if st.button("Add Row"):
-        st.write("New Row Added")
+        new_row = pd.Series({'Field Name': '', 'Field Group': '', 'Field Type': '', 'Boundaries': '', 'Certified Year': '', 'Active': ''})
+        df = df.append(new_row, ignore_index=True)
+        st.dataframe(df)
 
     # Data Visualization section
     st.markdown("---")
@@ -48,9 +54,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
 
 # import altair as alt
 # import numpy as np
