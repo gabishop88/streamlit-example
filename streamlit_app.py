@@ -1,5 +1,4 @@
 import streamlit as st
-import pandas as pd
 
 def main():
     st.set_page_config(
@@ -14,43 +13,25 @@ def main():
     st.markdown("---")
     st.write("👤 User System")
 
+    # Define style for the boxes
+    box_style = (
+        "border-radius: 10px;"
+        "padding: 20px;"
+        "margin-bottom: 20px;"
+        "background-color: #f0f0f0;"
+    )
+
     # Data Inputs section
-    st.markdown("---")
+    st.markdown('<div style="{}">'.format(box_style), unsafe_allow_html=True)
     st.write("📝 Data Inputs")
-    st.sidebar.title("Data Input Forms")
-    data_input_form = st.sidebar.selectbox("Select Form", ["Field Manager", "Usage History", "Equipment List", "Field Testing Data", "Finances"])
-    farm_name = st.selectbox("Farm Name", ["Farm 1", "Farm 2", "Farm 3"])
-    st.write(f"Selected Farm: {farm_name}")
-    st.sidebar.button("Upload Data")
-    st.sidebar.button("Download Data")
-    st.button("Filter")
-
-    # Form
-    st.subheader(data_input_form)
-    # Sample DataFrame for demonstration
-    data = {'Field Name': ['Field 1', 'Field 2'], 'Field Group': ['Group 1', 'Group 2'], 'Field Type': ['Type 1', 'Type 2'],
-            'Boundaries': ['Boundary 1', 'Boundary 2'], 'Certified Year': [2022, 2023], 'Active': [True, False]}
-    df = pd.DataFrame(data)
-
-    # Display DataFrame as a table
-    st.dataframe(df)
-
-    # Button to add a new row
-    if st.button("Add Row"):
-        new_row = pd.Series({'Field Name': '', 'Field Group': '', 'Field Type': '', 'Boundaries': '', 'Certified Year': '', 'Active': ''})
-        df = df.append(new_row, ignore_index=True)
-        st.dataframe(df)
+    # Add components for Data Inputs section here
+    st.markdown("</div>", unsafe_allow_html=True)
 
     # Data Visualization section
-    st.markdown("---")
+    st.markdown('<div style="{}">'.format(box_style), unsafe_allow_html=True)
     st.write("📊 Data Visualization")
-    st.sidebar.title("Data Visualization Types")
-    visualization_type = st.sidebar.selectbox("Select Visualization", ["Field Visualizer", "Crop Explorer", "Report Generator"])
-    st.write(f"Selected Visualization: {visualization_type}")
-
-    if visualization_type == "Field Visualizer":
-        st.subheader("Field Visualizer Map")
-        # Add interactive map component here
+    # Add components for Data Visualization section here
+    st.markdown("</div>", unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
