@@ -24,17 +24,32 @@ def main():
     # Data Inputs section
     st.markdown('<div style="{}">'.format(box_style), unsafe_allow_html=True)
     st.write("📝 Data Inputs")
-    # Add components for Data Inputs section here
-    st.markdown("</div>", unsafe_allow_html=True)
+
+    # Create a reactive empty container for Data Inputs section
+    data_inputs_container = st.empty()
 
     # Data Visualization section
+    st.markdown("</div>", unsafe_allow_html=True)
     st.markdown('<div style="{}">'.format(box_style), unsafe_allow_html=True)
     st.write("📊 Data Visualization")
-    # Add components for Data Visualization section here
+
+    # Create a reactive empty container for Data Visualization section
+    data_viz_container = st.empty()
+
+    # Dropdown menu for selecting content
+    selected_content = st.selectbox("Select Content", ["Data Inputs", "Data Visualization"])
+
+    # Update content based on dropdown selection
+    if selected_content == "Data Inputs":
+        data_inputs_container.write("Content for Data Inputs")
+    elif selected_content == "Data Visualization":
+        data_viz_container.write("Content for Data Visualization")
+
     st.markdown("</div>", unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
+
 
 # import altair as alt
 # import numpy as np
