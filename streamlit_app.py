@@ -41,15 +41,14 @@ def main():
 
     # Update content based on dropdown selection
     if selected_content == "Data Inputs":
-        data_inputs_container.write("Content for Data Inputs")
+        data_inputs_container.markdown('<div style="{}">Content for Data Inputs</div>'.format(box_style), unsafe_allow_html=True)
     elif selected_content == "Data Visualization":
-        data_viz_container.write("Content for Data Visualization")
+        data_viz_container.markdown('<div style="{}">Content for Data Visualization</div>'.format(box_style), unsafe_allow_html=True)
 
     st.markdown("</div>", unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
-
 
 # import altair as alt
 # import numpy as np
